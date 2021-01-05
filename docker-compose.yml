@@ -6,6 +6,7 @@ services:
       - 80:80
     volumes:
      - ./www:/var/www/html/
+     - ./battle_project:/var/www/battle_project
      - ./docker/server/000-default.conf:/etc/apache2/sites-available/000-default.conf
      - ./docker/server/apache2.conf:/etc/apache2/apache2.conf
      - ./docker/server/php.ini:/usr/local/etc/php/php.ini
@@ -19,7 +20,7 @@ services:
       MYSQL_ROOT_PASSWORD: course-legacy
       MYSQL_USER: root
     volumes:
-      - ./import.sql:/docker-entrypoint-initdb.d/import.sql
+      - ./sql/import.sql:/docker-entrypoint-initdb.d/import.sql
     restart: always
 
   phpmyadmin:
